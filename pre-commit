@@ -1,0 +1,11 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# detect new tracked files, conduct auto-fix
+git diff HEAD --name-only --diff-filter=AMRC | grep 'content\/ja\/.*\.md\>$' | xargs npx textlint --fix --config textlint/ja.json
+git diff HEAD --name-only --diff-filter=AMRC | grep 'content\/en\/.*\.md\>$' | xargs npx textlint --fix --config textlint/en.json
+
+# detect new tracked files, check textlint errors
+git diff HEAD --name-only --diff-filter=AMRC | grep 'content\/ja\/.*\.md\>$' | xargs npx textlint --config textlint/ja.json
+git diff HEAD --name-only --diff-filter=AMRC | grep 'content\/en\/.*\.md\>$' | xargs npx textlint --config textlint/en.json
+
