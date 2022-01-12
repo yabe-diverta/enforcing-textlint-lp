@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-set -e
-
 chmod -R a+rwx $(pwd)/.git
 mkdir -p "$(pwd)/.git/hooks"
 
@@ -11,5 +9,4 @@ if [ -e "$(pwd)/.git/hooks/pre-commit" ]; then
 fi
 
 curl -s https://raw.githubusercontent.com/yabe-diverta/enforcing-textlint-lp/main/pre-commit --output "$(pwd)/.git/hooks/pre-commit"
-
 chmod -R a+rwx $(pwd)/.git
