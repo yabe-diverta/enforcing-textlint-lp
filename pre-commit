@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+set -eu
+
 # detect new tracked files, conduct auto-fix
 git diff HEAD --name-only --diff-filter=AMRC | grep 'content\/ja\/.*\.md\>$' | xargs npx textlint --fix --config textlint/ja.json
 git diff HEAD --name-only --diff-filter=AMRC | grep 'content\/en\/.*\.md\>$' | xargs npx textlint --fix --config textlint/en.json
